@@ -6,5 +6,9 @@ target 'Flash Chat' do
   use_frameworks!
 
   # Pods for Flash Chat
-
+pod 'Firebase'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'SVProgressHUD'
+pod 'ChameleonFramework'
 end
