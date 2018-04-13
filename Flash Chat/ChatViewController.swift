@@ -125,6 +125,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //TODO: Log out the user and send them back to WelcomeViewController
         do {
             try Auth.auth().signOut()
+            print("sign out successful")
+            navigationController?.popToRootViewController(animated: true)
         } catch {
             print("sign out failed...")
         }
