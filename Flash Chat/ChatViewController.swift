@@ -129,7 +129,21 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //TODO: Create the retrieveMessages method here:
-    
+    func retrieveMessages() {
+        let messageDB = Database.database().reference().child("Messages")
+        
+        messageDB.observe(.childAdded) { (snapshot) in
+            let snapshotvalue = snapshot.value as! Dictionary<String, String>
+            
+            let message = Message()
+            message.messageBody = snapshotvalue["MessageBody"]!
+            message.sender = snapshotvalue["Sender"]!
+            
+            self.messageArray.append(message)
+            self.configureTableView()
+            self.messageTableView.reloadData()
+        }
+    }
     
 
     
