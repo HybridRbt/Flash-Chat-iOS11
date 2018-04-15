@@ -70,7 +70,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     //TODO: Declare tableViewTapped here:
-    
+    @objc func tableViewTapped() {
+        messageTextfield.endEditing(true)
+    }
     
     
     //TODO: Declare configureTableView here:
