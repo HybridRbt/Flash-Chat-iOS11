@@ -126,6 +126,24 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         messageTextfield.isEnabled = false
         sendButton.isEnabled = false
         
+        let messageDB = Database.database().reference().child("Messages")
+        
+        let messageDict = ["Sender" : Auth.auth().currentUser?.email,
+                           "MessageBody" : messageTextfield.text!]
+        
+        messageDB.childByAutoId().setValue(messageDict) {
+            (error, reference) in
+            if error != nil {
+                print(error!)
+            } else {
+                print("message saved successfully!")
+                
+                self.messageTextfield.isEnabled = true
+                self.sendButton.isEnabled = true
+                self.messageTextfield.text = ""
+            }
+        }
+        
     }
     
     //TODO: Create the retrieveMessages method here:
