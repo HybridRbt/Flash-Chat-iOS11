@@ -121,7 +121,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         //TODO: Send the message to Firebase and save it in our database
+        messageTextfield.endEditing(true)
         
+        messageTextfield.isEnabled = false
+        sendButton.isEnabled = false
         
     }
     
